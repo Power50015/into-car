@@ -29,16 +29,49 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link class="nav-link active" aria-current="page" to="/login">المقالات</router-link>
+            <router-link class="nav-link active" aria-current="page" to="/login"
+              >المقالات</router-link
+            >
           </li>
           <li class="nav-item">
-            <router-link class="nav-link active" aria-current="page" to="/login">الأسئله</router-link>
+            <router-link class="nav-link active" aria-current="page" to="/login"
+              >الأسئله</router-link
+            >
           </li>
           <li class="nav-item">
-            <router-link class="nav-link active" aria-current="page" to="/login">مراكز الصيانه</router-link>
+            <router-link class="nav-link active" aria-current="page" to="/login"
+              >مراكز الصيانه</router-link
+            >
           </li>
-          <li class="nav-item">
-            <router-link class="nav-link active" aria-current="page" to="/login">تسجيل الدخول</router-link>
+          <li class="nav-item" v-if="!store.isLogin">
+            <router-link class="nav-link active" aria-current="page" to="/login"
+              >تسجيل الدخول</router-link
+            >
+          </li>
+          <li class="nav-item dropdown" v-if="store.isLogin">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img
+                :src="store.userImg"
+                alt="user image"
+                width="35"
+                height="35"
+              />
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">الصفحه الشخصيه</a></li>
+              <li><a class="dropdown-item" href="#">لوحه التحكم</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <div class="dropdown-item" @click="logout">تسجيل الخروج</div>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -47,10 +80,21 @@
 </template>
 
 <script lang="ts" setup>
+// stores
+import { useAuthStore } from "@/stores/auth";
 import { ref } from "@vue/reactivity";
-import { useRoute } from "vue-router";
+// Firebase
+import app from "@/firebase";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { getAuth, signOut } from "firebase/auth";
+// Router
+import { useRouter, useRoute } from "vue-router";
 
 const route = useRoute();
+const router = useRouter();
+const store = useAuthStore();
+const db = getFirestore();
+const auth = getAuth();
 
 const scrollPosition = ref();
 window.addEventListener("scroll", updateScroll);
@@ -58,10 +102,28 @@ window.addEventListener("scroll", updateScroll);
 function updateScroll() {
   scrollPosition.value = window.scrollY;
 }
+function logout() {
+  signOut(auth).then(() => {
+    store.userName = "";
+    store.userEmail = "";
+    store.userImg = "";
+    store.userType = "";
+    store.isLogin = false;
+    store.isLoding = true;
+    router.push("/");
+  });
+}
 </script>
 
 <style>
 nav {
   transition: all 1.5s;
+}
+.dropdown-menu[data-bs-popper] {
+  left: 0;
+  right: auto;
+}
+.dropdown-item {
+  cursor: pointer;
 }
 </style>

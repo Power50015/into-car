@@ -7,7 +7,7 @@
         <div class="mb-3">
           <label for="formFile" class="form-label">صوره المقال</label>
           <template v-if="imgPreview">
-            <img :src="imgPreview" class="img-fluid"/>
+            <img :src="imgPreview" class="img-fluid" />
             <p class="mb-0">file name: {{ imgData.value.name }}</p>
             <p class="mb-0">
               size: {{ Math.round(imgData.value.size / 1024) }}KB
@@ -108,7 +108,7 @@ function savePost() {
           imgURL.value = "";
           imgUpload.value = 0;
           imgPreview.value = "";
-          imgData = [];
+          imgData.length = 0;
           createToast("تم إضافه المقال", {
             type: "success",
           });
@@ -133,7 +133,7 @@ function DetectFiles(input) {
 textarea {
   min-height: 550px;
 }
-.img-fluid{
+.img-fluid {
   max-width: 350;
 }
 </style>

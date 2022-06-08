@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid  bg-light py-5 mt-5">
+  <div class="container-fluid  bg-light pt-5 mt-5">
     <h1 class="pb-5 text-center">أحدث الأسئله</h1>
     <div class="row">
       <div class="col-12 col-lg-2 p-0">

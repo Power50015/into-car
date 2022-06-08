@@ -67,6 +67,16 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">الصفحه الشخصيه</a></li>
               <li><a class="dropdown-item" href="#">لوحه التحكم</a></li>
+              <li>
+                <router-link class="dropdown-item" to="/add-post"
+                  >أضف مقال</router-link
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" v-if="store.userType == 'users'"
+                  >أضف سؤال</a
+                >
+              </li>
               <li><hr class="dropdown-divider" /></li>
               <li>
                 <div class="dropdown-item" @click="logout">تسجيل الخروج</div>

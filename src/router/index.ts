@@ -22,7 +22,17 @@ const router = createRouter({
       path: "/add-post",
       name: "AddPost",
       component: () => import("../views/AddPostView.vue"),
-    }
+    },
+    {
+      path: "/add-question",
+      name: "AddQuestion",
+      component: () => import("../views/AddQuestionView.vue"),
+    },
+    {
+      path: "/dashborad",
+      name: "Dashborad",
+      component: () => import("../views/DashboradView.vue"),
+    },
   ],
 });
 

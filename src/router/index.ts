@@ -39,6 +39,16 @@ const router = createRouter({
       component: () => import("../views/AddQuestionView.vue"),
     },
     {
+      path: "/question/:id",
+      name: "Question",
+      component: () => import("../views/QuestionView.vue"),
+    },
+    {
+      path: "/post/:id",
+      name: "Post",
+      component: () => import("../views/PostView.vue"),
+    },
+    {
       path: "/dashborad",
       name: "Dashborad",
       component: () => import("../views/DashboradView.vue"),

@@ -7,7 +7,7 @@
         v-for="item in postData"
         :key="item.createdAt"
       >
-        <router-link class="card w-100" to="/">
+        <router-link class="card w-100" :to="{ name: 'Post', params: { id: item.createdAt } }">
           <img
             :src="item.img"
             class="card-img-top"

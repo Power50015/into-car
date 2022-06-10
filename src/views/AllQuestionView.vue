@@ -1,9 +1,16 @@
 <template>
-  <div class="container-fluid  bg-light pt-5 mt-5">
-    <h1 class="pb-5 text-center"> الأسئله</h1>
+  <div class="container-fluid bg-light pt-5 mt-5">
+    <h1 class="pb-5 text-center">الأسئله</h1>
     <div class="row">
-      <div class="col-12 col-lg-2 p-0" v-for="item in questionData" :key="item.createdAt">
-        <div class="card w-100">
+      <div
+        class="col-12 col-lg-2 p-0"
+        v-for="item in questionData"
+        :key="item.createdAt"
+      >
+        <router-link
+          class="card w-100"
+          :to="{ name: 'Question', params: { id: item.createdAt } }"
+        >
           <img
             :src="item.img"
             class="card-img-top"
@@ -16,7 +23,7 @@
               <h5 class="card-title">{{ item.title }}</h5>
             </div>
           </div>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -41,15 +48,13 @@ getQuestionData();
 
 async function getQuestionData() {
   questionData.length = 0;
-  const q = query(
-    collection(db, "question"),
-    orderBy("createdAt", "desc")
-  );
+  const q = query(collection(db, "question"), orderBy("createdAt", "desc"));
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
     questionData.push(doc.data());
   });
-}</script>
+}
+</script>
 
 <style scoped>
 .card {

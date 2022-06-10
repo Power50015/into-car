@@ -13,7 +13,6 @@
           <h4>{{ post }}</h4>
         </div>
       </div>
-      
     </div>
   </div>
 </template>

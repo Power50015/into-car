@@ -18,12 +18,10 @@ const unsub = await onAuthStateChanged(auth, async (user) => {
       authState.userName = doc.data().name;
       authState.userEmail = doc.data().email;
       authState.userImg = doc.data().img;
-      if (doc.data().type == "users") {
-        authState.userType = "users";
-      } else {
+      authState.userType = doc.data().type;
+      if (doc.data().type == "maintenance") {
         authState.userPhone = doc.data().phone;
         authState.userAddress = doc.data().address;
-        authState.userType = "users";
       }
     });
     authState.isLoding = true;

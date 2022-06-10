@@ -2,110 +2,65 @@
   <div class="container">
     <h1 class="my-5">أحدث مقالات</h1>
     <div class="row">
-      <div class="col-12 col-lg-4">
+      <div
+        class="col-12 col-lg-4"
+        v-for="item in postData"
+        :key="item.createdAt"
+      >
         <router-link class="card w-100" to="/">
           <img
-            src="https://source.unsplash.com/random/354×354/?car"
+            :src="item.img"
             class="card-img-top"
-            alt="..."
+            :alt="item.title"
             width="354"
             height="354"
           />
           <div class="card-body">
             <div class="card-content">
-              <h5 class="card-title">توفير بنزين للسياره</h5>
+              <h5 class="card-title">{{ item.title }}</h5>
             </div>
           </div>
         </router-link>
-      </div>
-      <div class="col-12 col-lg-4">
-        <div class="card w-100">
-          <img
-           src="https://source.unsplash.com/random/353×354/?car"
-            class="card-img-top"
-            alt="..."
-            width="354"
-            height="354"
-          />
-          <div class="card-body">
-            <div class="card-content">
-              <h5 class="card-title">أزاى ترجع العربيه الكهنه جديده</h5>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-lg-4">
-        <div class="card w-100">
-          <img
-            src="https://source.unsplash.com/random/?cars"
-            class="card-img-top"
-            alt="..."
-            width="354"
-            height="354"
-          />
-          <div class="card-body">
-            <div class="card-content">
-              <h5 class="card-title">أضحك الصوره تطلع حلوه</h5>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-lg-4">
-        <router-link class="card w-100" to="/">
-          <img
-            src="https://source.unsplash.com/random/300×300/?car"
-            class="card-img-top"
-            alt="..."
-            width="354"
-            height="354"
-          />
-          <div class="card-body">
-            <div class="card-content">
-              <h5 class="card-title">توفير بنزين للسياره</h5>
-            </div>
-          </div>
-        </router-link>
-      </div>
-      <div class="col-12 col-lg-4">
-        <div class="card w-100">
-          <img
-            src="https://source.unsplash.com/random/300×300/?cars"
-            class="card-img-top"
-            alt="..."
-            width="354"
-            height="354"
-          />
-          <div class="card-body">
-            <div class="card-content">
-              <h5 class="card-title">أزاى ترجع العربيه الكهنه جديده</h5>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-lg-4">
-        <div class="card w-100">
-          <img
-            src="https://source.unsplash.com/random/?car"
-            class="card-img-top"
-            alt="..."
-            width="354"
-            height="354"
-          />
-          <div class="card-body">
-            <div class="card-content">
-              <h5 class="card-title">أضحك الصوره تطلع حلوه</h5>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
-    <div class="text-center pt-5 ">
-      <router-link to="/" class="btn btn-info text-white">المزيد من المقالات</router-link>
+    <div class="text-center pt-5">
+      <router-link to="/posts" class="btn btn-info text-white"
+        >المزيد من المقالات</router-link
+      >
     </div>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { getFirestore } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  where,
+  query,
+  orderBy,
+  limit,
+} from "firebase/firestore";
+import { reactive, ref } from "@vue/reactivity";
+import "mosha-vue-toastify/dist/style.css";
+const db = getFirestore();
+const postData = reactive([]);
+
+getPostData();
+
+async function getPostData() {
+  postData.length = 0;
+  const q = query(
+    collection(db, "post"),
+    orderBy("createdAt", "desc"),
+    limit(6)
+  );
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    postData.push(doc.data());
+  });
+}
+</script>
 
 <style scoped>
 .card {

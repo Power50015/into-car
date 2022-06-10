@@ -96,12 +96,13 @@ function savePost() {
       getDownloadURL(uploadTask.snapshot.ref).then((URL) => {
         btn.value = true;
         imgURL.value = URL;
-
+        const date = new Date();
         addDoc(collection(db, "post"), {
           title: title.value,
           des: des.value,
           img: imgURL.value,
           user: auth.userEmail,
+          createdAt: date.getTime(),
         }).then(() => {
           title.value = "";
           des.value = "";

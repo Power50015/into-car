@@ -97,12 +97,13 @@ function savePost() {
         btn.value = true;
         imgURL.value = URL;
         const date = new Date();
+        const mydata = date.getTime();
         addDoc(collection(db, "post"), {
           title: title.value,
           des: des.value,
           img: imgURL.value,
           user: auth.userEmail,
-          createdAt: date.getTime(),
+          createdAt: mydata,
         }).then(() => {
           title.value = "";
           des.value = "";
@@ -113,6 +114,7 @@ function savePost() {
           createToast("تم إضافه المقال", {
             type: "success",
           });
+          router.push("/post/" + mydata);
         });
       });
     }

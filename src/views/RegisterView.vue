@@ -253,6 +253,11 @@ function addUser() {
             type: form.type,
             phone: form.phone,
             address: form.address,
+            winch: false,
+            singular: false,
+            mechanics: false,
+            electricity: false,
+            painting: false,
           })
             .then(() => {
               store.userName = form.name;

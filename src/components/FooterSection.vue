@@ -7,7 +7,7 @@
             <img src="@/assets/images/logo.png" alt="" width="50" />
           </div>
         </div>
-        <div class="col-3 links">
+        <div class="col links">
           <ul>
             <li>
               <a href="#"

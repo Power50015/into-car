@@ -13,6 +13,9 @@
           <h4>{{ post }}</h4>
         </div>
       </div>
+      <div class="col-12 my-4">
+        <service-section/>
+      </div>
     </div>
   </div>
 </template>
@@ -25,6 +28,7 @@ import "mosha-vue-toastify/dist/style.css";
 import app from "@/firebase";
 import { getFirestore } from "firebase/firestore";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import ServiceSection from "@/components/ServiceSection.vue";
 
 const store = useAuthStore();
 const db = getFirestore();

@@ -15,6 +15,7 @@ const unsub = await onAuthStateChanged(auth, async (user) => {
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       authState.isLogin = true;
+      authState.userId = doc.id;
       authState.userName = doc.data().name;
       authState.userEmail = doc.data().email;
       authState.userImg = doc.data().img;
@@ -36,6 +37,7 @@ export const useAuthStore = defineStore({
   state: () => ({
     isLogin: false,
     isLoding: false,
+    userId: "",
     userType: "",
     userName: "",
     userEmail: "",

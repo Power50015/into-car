@@ -34,12 +34,19 @@
             >
           </li>
           <li class="nav-item">
-            <router-link class="nav-link active" aria-current="page" to="/questions"
+            <router-link
+              class="nav-link active"
+              aria-current="page"
+              to="/questions"
               >الأسئله</router-link
             >
           </li>
           <li class="nav-item">
-            <router-link class="nav-link active" aria-current="page" to="/login"
+            <router-link
+              class="nav-link active"
+              aria-current="page"
+              to="/login"
+              v-if="store.userType == 'users'"
               >مراكز الصيانه</router-link
             >
           </li>
@@ -65,7 +72,11 @@
               />
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">الصفحه الشخصيه</a></li>
+              <li>
+                <router-link class="dropdown-item" to="/profile"
+                  >الصفحه الشخصيه</router-link
+                >
+              </li>
               <li>
                 <router-link class="dropdown-item" to="/dashborad"
                   >لوحه التحكم</router-link

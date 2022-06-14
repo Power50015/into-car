@@ -45,8 +45,7 @@
             <router-link
               class="nav-link active"
               aria-current="page"
-              to="/login"
-              v-if="store.userType == 'users'"
+              to="/maintenances"
               >مراكز الصيانه</router-link
             >
           </li>

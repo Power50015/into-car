@@ -29,9 +29,14 @@ const router = createRouter({
       component: () => import("../views/AllQuestionView.vue"),
     },
     {
-      path: "/add-post",
-      name: "AddPost",
-      component: () => import("../views/AddPostView.vue"),
+      path: "/profile",
+      name: "Profile",
+      component: () => import("../views/ProfileView.vue"),
+    },
+    {
+      path: "/maintenances",
+      name: "AllMaintenanceView",
+      component: () => import("../views/AllMaintenanceView.vue"),
     },
     {
       path: "/add-question",
@@ -57,6 +62,11 @@ const router = createRouter({
       path: "/profile",
       name: "Profile",
       component: () => import("../views/ProfileView.vue"),
+    },
+    {
+      path: "/user/:email",
+      name: "User",
+      component: () => import("../views/UserView.vue"),
     },
   ],
 });

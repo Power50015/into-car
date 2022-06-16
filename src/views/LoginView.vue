@@ -65,12 +65,10 @@ function loginUser() {
         store.userName = doc.data().name;
         store.userEmail = doc.data().email;
         store.userImg = doc.data().img;
-        if (doc.data().type == "users") {
-          store.userType = "users";
-        } else {
+        store.userType = doc.data().type;
+        if (doc.data().type == "maintenance") {
           store.userPhone = doc.data().phone;
           store.userAddress = doc.data().address;
-          store.userType = "users";
         }
       });
       store.isLoding = true;

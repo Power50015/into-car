@@ -46,6 +46,7 @@
               class="nav-link active"
               aria-current="page"
               to="/maintenances"
+              v-if="store.userType != 'maintenance'"
               >مراكز الصيانه</router-link
             >
           </li>

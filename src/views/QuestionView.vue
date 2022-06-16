@@ -7,7 +7,10 @@
           <img :src="userPhoto" :alt="title" width="50" height="50" />
           <h5>{{ userName }}</h5>
           <h5 class="badge bg-primary">{{ userType }}</h5>
-          <router-link class="nav-link active" aria-current="page" to="/"
+          <router-link
+            class="nav-link active"
+            aria-current="page"
+            :to="{ name: 'User', params: { email: userEmail } }"
             >الصفحه الشخصيه</router-link
           >
         </div>
@@ -30,7 +33,7 @@
         :key="item.index"
       >
         <div class="row text-start">
-          <router-link to="/" class="col-2">
+          <router-link :to="{ name: 'User', params: { email: item.commentUserEmail  } }" class="col-2">
             <img
               :src="item.commentUserPhoto"
               :alt="item.commentUserName"

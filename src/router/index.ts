@@ -39,6 +39,11 @@ const router = createRouter({
       component: () => import("../views/AllMaintenanceView.vue"),
     },
     {
+      path: "/add-post",
+      name: "AddPost",
+      component: () => import("../views/AddPostView.vue"),
+    },
+    {
       path: "/add-question",
       name: "AddQuestion",
       component: () => import("../views/AddQuestionView.vue"),
@@ -64,7 +69,7 @@ const router = createRouter({
       component: () => import("../views/ProfileView.vue"),
     },
     {
-      path: "/user/:email",
+      path: "/user/:email/",
       name: "User",
       component: () => import("../views/UserView.vue"),
     },

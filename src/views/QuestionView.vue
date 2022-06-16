@@ -33,7 +33,10 @@
         :key="item.index"
       >
         <div class="row text-start">
-          <router-link :to="{ name: 'User', params: { email: item.commentUserEmail  } }" class="col-2">
+          <router-link
+            :to="{ name: 'User', params: { email: item.commentUserEmail } }"
+            class="col-2"
+          >
             <img
               :src="item.commentUserPhoto"
               :alt="item.commentUserName"
@@ -75,7 +78,7 @@ const userType = ref("");
 
 const comment = ref("");
 
-const comments = reactive([]);
+const comments = reactive([] as any[]);
 
 getQuestionData();
 

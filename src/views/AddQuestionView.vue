@@ -24,7 +24,7 @@
             type="file"
             id="formFile"
             accept="image/jpeg"
-            @change="DetectFiles($event.target.files)"
+           @change="DetectFiles($event?.target)"
           />
         </div>
         <!-- End image-->
@@ -73,7 +73,7 @@ const auth = useAuthStore();
 const title = ref<string>("");
 const des = ref<string>("");
 const imgURL = ref<string>("");
-const imgData = reactive([]);
+const imgData = reactive([] as any["value"]);
 const imgPreview = ref<any>("");
 const btn = ref(true);
 const imgUpload = ref(0);
@@ -120,12 +120,12 @@ function savePost() {
   );
 }
 
-function DetectFiles(input) {
-  imgData.value = input[0];
+function DetectFiles(input:any) {
+  imgData.value = input.files[0];
   if (input) {
     var reader = new FileReader();
     reader.onload = (e) => {
-      imgPreview.value = e.target.result;
+      imgPreview.value = e.target!.result;
     };
     reader.readAsDataURL(input[0]);
   }

@@ -54,7 +54,7 @@
             aria-hidden="true"
           >
             <div class="modal-dialog">
-              <form @submit.prevent="saveBooking"  class="modal-content">
+              <form @submit.prevent="saveBooking" class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">حجز خدمه</h5>
                   <button
@@ -140,10 +140,14 @@
       </div>
     </div>
   </div>
-  <div class="container pb-5"  v-if="userType == 'users'">
+  <div class="container pb-5" v-if="userType == 'users'">
     <h1 class="my-5">الأسئله</h1>
     <div class="row">
-      <div class="col-12 col-lg-4" v-for="item in questions" :key="item.createdAt">
+      <div
+        class="col-12 col-lg-4"
+        v-for="item in questions"
+        :key="item.createdAt"
+      >
         <router-link
           class="card w-100"
           :to="{ name: 'Question', params: { id: item.createdAt } }"
@@ -197,8 +201,8 @@ const myService = ref("");
 const post = ref();
 const question = ref();
 
-const posts = reactive([]);
-const questions = reactive([]);
+const posts = reactive([] as any[]);
+const questions = reactive([] as any[]);
 
 getPostData();
 

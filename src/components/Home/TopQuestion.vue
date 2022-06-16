@@ -1,8 +1,12 @@
 <template>
-  <div class="container-fluid  bg-light pt-5 mt-5">
+  <div class="container-fluid bg-light pt-5 mt-5">
     <h1 class="pb-5 text-center">أحدث الأسئله</h1>
     <div class="row">
-      <div class="col-12 col-lg-2 p-0" v-for="item in questionData" :key="item.createdAt">
+      <div
+        class="col-12 col-lg-2 p-0"
+        v-for="item in questionData"
+        :key="item.createdAt"
+      >
         <div class="card w-100">
           <img
             :src="item.img"
@@ -35,7 +39,7 @@ import {
 import { reactive, ref } from "@vue/reactivity";
 import "mosha-vue-toastify/dist/style.css";
 const db = getFirestore();
-const questionData = reactive([]);
+const questionData = reactive([] as any[]);
 
 getQuestionData();
 
@@ -50,7 +54,8 @@ async function getQuestionData() {
   querySnapshot.forEach((doc) => {
     questionData.push(doc.data());
   });
-}</script>
+}
+</script>
 
 <style scoped>
 .card {

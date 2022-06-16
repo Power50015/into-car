@@ -1,7 +1,7 @@
 <template>
   <Slider />
-  <Service/>
-  <div class="container-fluid bg-light" >
+  <Service />
+  <div class="container-fluid bg-light">
     <div class="container">
       <div class="row">
         <div class="col-12 col-lg-9" v-if="!store.isLogin">
@@ -14,22 +14,38 @@
           >
         </div>
         <div class="col-12 col-lg-3">
-          <img src="@/assets/images/banner300.gif" alt="mm" class="w-100 mec-img" />
+          <img
+            src="@/assets/images/banner300.gif"
+            alt="mm"
+            class="w-100 mec-img"
+          />
         </div>
         <div class="col-12 col-lg-3" v-if="store.isLogin">
-          <img src="@/assets/images/banner300.gif" alt="mm" class="w-100 mec-img" />
+          <img
+            src="@/assets/images/banner300.gif"
+            alt="mm"
+            class="w-100 mec-img"
+          />
         </div>
         <div class="col-12 col-lg-3" v-if="store.isLogin">
-          <img src="@/assets/images/banner300.gif" alt="mm" class="w-100 mec-img" />
+          <img
+            src="@/assets/images/banner300.gif"
+            alt="mm"
+            class="w-100 mec-img"
+          />
         </div>
         <div class="col-12 col-lg-3" v-if="store.isLogin">
-          <img src="@/assets/images/banner300.gif" alt="mm" class="w-100 mec-img" />
+          <img
+            src="@/assets/images/banner300.gif"
+            alt="mm"
+            class="w-100 mec-img"
+          />
         </div>
       </div>
     </div>
   </div>
-  <TopBlog/>
-  <TopQuestion/>
+  <TopBlog />
+  <TopQuestion />
 </template>
 <script lang="ts" setup>
 import { useAuthStore } from "@/stores/auth";

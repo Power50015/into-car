@@ -42,7 +42,7 @@ import {
 import { reactive, ref } from "@vue/reactivity";
 import "mosha-vue-toastify/dist/style.css";
 const db = getFirestore();
-const questionData = reactive([]);
+const questionData = reactive([] as any[]);
 
 getQuestionData();
 

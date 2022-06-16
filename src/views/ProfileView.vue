@@ -37,7 +37,7 @@
           type="file"
           id="formFile"
           accept="image/jpeg"
-          @change="DetectFiles($event.target.files)"
+          @change="DetectFiles($event?.target)"
         />
       </div>
       <!-- End image-->
@@ -110,13 +110,13 @@ const form = reactive({
 });
 
 const imgURL = ref<string>("");
-const imgData = reactive([]);
+const imgData = reactive([] as any["value"]);
 const imgPreview = ref<any>("");
 const btn = ref(true);
 const imgUpload = ref(0);
 
 async function editUser() {
-//   store.isLoding = false;
+  //   store.isLoding = false;
 
   if (imgPreview.value != "") {
     const storageRef = refire(storage, `${imgData.value.name}`);
@@ -210,12 +210,12 @@ async function editUser() {
   store.isLoding = true;
 }
 
-function DetectFiles(input) {
-  imgData.value = input[0];
+function DetectFiles(input: any) {
+  imgData.value = input.files[0];
   if (input) {
     var reader = new FileReader();
     reader.onload = (e) => {
-      imgPreview.value = e.target.result;
+      imgPreview.value = e.target!.result;
     };
     reader.readAsDataURL(input[0]);
   }
@@ -249,7 +249,7 @@ form {
   min-width: 40%;
   z-index: 3;
   position: relative;
-  background: #eeeeee5e; 
+  background: #eeeeee5e;
   margin: 15px 0;
   border-radius: 50px;
 }

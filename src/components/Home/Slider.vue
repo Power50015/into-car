@@ -59,7 +59,6 @@ button {
   color: #eee;
 }
 
-
 .circles {
   position: absolute;
   top: 0;

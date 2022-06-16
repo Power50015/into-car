@@ -151,9 +151,9 @@ const db = getFirestore();
 const post = ref();
 const question = ref();
 const booking = ref();
-const posts = reactive([]);
-const questions = reactive([]);
-const bookings = reactive([]);
+const posts = reactive([] as any[]);
+const questions = reactive([] as any[]);
+const bookings = reactive([] as any[]);
 
 getPsotCount();
 async function getPsotCount() {
@@ -191,7 +191,8 @@ async function getPsotCount() {
     });
   }
 }
-async function editBooking(id) {
+
+async function editBooking(id: any) {
   await updateDoc(doc(db, "booking", id), {
     state: 1,
   }).then(async () => {
@@ -199,13 +200,17 @@ async function editBooking(id) {
       type: "success",
     });
     bookings.length = 0;
+
     const q3 = query(
       collection(db, "booking"),
       where("maintenance", "==", store.userEmail),
       where("state", "==", "0")
     );
+
     const querySnapshot3 = await getDocs(q3);
+
     booking.value = querySnapshot3.size;
+
     querySnapshot3.forEach((doc) => {
       bookings.push({
         id: doc.id,
@@ -223,7 +228,7 @@ async function editBooking(id) {
   box-shadow: 0 0 20px #eee;
   border-radius: 10px;
 }
-.btn{
+.btn {
   cursor: pointer !important;
 }
 </style>

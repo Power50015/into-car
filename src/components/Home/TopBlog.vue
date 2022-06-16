@@ -7,7 +7,10 @@
         v-for="item in postData"
         :key="item.createdAt"
       >
-        <router-link class="card w-100" :to="{ name: 'Post', params: { id: item.createdAt } }">
+        <router-link
+          class="card w-100"
+          :to="{ name: 'Post', params: { id: item.createdAt } }"
+        >
           <img
             :src="item.img"
             class="card-img-top"
@@ -44,7 +47,7 @@ import {
 import { reactive, ref } from "@vue/reactivity";
 import "mosha-vue-toastify/dist/style.css";
 const db = getFirestore();
-const postData = reactive([]);
+const postData = reactive([] as any[]);
 
 getPostData();
 

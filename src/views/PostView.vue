@@ -78,7 +78,7 @@ const userType = ref("");
 
 const comment = ref("");
 
-const comments = reactive([]);
+const comments = reactive([] as any[]);
 
 getPostData();
 

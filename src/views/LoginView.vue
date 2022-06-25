@@ -53,6 +53,7 @@ const email = ref("learnvue@ewe.com");
 const password = ref("AhmedPassword");
 
 function loginUser() {
+  debugger
   signInWithEmailAndPassword(auth, email.value, password.value)
     .then(async () => {
       const q = query(

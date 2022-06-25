@@ -24,7 +24,7 @@
             type="file"
             id="formFile"
             accept="image/jpeg"
-            @change="DetectFiles($event?.target)"
+             @change="DetectFiles($event.target)"
           />
         </div>
         <!-- End image-->
@@ -121,14 +121,14 @@ function savePost() {
   );
 }
 
-function DetectFiles(input: any) {
+function DetectFiles(input:any) {
   imgData.value = input.files[0];
   if (input) {
     var reader = new FileReader();
     reader.onload = (e) => {
       imgPreview.value = e.target!.result;
     };
-    reader.readAsDataURL(input[0]);
+    reader.readAsDataURL(input.files[0]);
   }
 }
 </script>

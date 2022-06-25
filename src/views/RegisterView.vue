@@ -232,19 +232,30 @@ function addUser() {
             email: form.email,
             img: "https://png.pngtree.com/png-vector/20190114/ourlarge/pngtree-vector-avatar-icon-png-image_313572.jpg",
             type: form.type,
-          }).then(() => {
-            store.userName = form.name;
-            store.userEmail = form.email;
-            store.userImg =
-              "https://png.pngtree.com/png-vector/20190114/ourlarge/pngtree-vector-avatar-icon-png-image_313572.jpg";
-            store.userType = form.type;
-            store.isLogin = true;
-            store.isLoding = true;
-            createToast("تم تسجيل المستخدم الجديد", {
-              transition: "bounce",
-              type: "success",
+          })
+            .then(() => {
+              store.userName = form.name;
+              store.userEmail = form.email;
+              store.userImg =
+                "https://png.pngtree.com/png-vector/20190114/ourlarge/pngtree-vector-avatar-icon-png-image_313572.jpg";
+              store.userType = form.type;
+              store.isLogin = true;
+              store.isLoding = true;
+              createToast("تم تسجيل المستخدم الجديد", {
+                transition: "bounce",
+                type: "success",
+              });
+            })
+            .then(() => {
+              form.name = "";
+              form.email = "";
+              form.password = "";
+              form.confirmPassword = "";
+              form.type = "users";
+              form.phone = "";
+              form.address = "";
+              router.push("/");
             });
-          });
         } else {
           addDoc(collection(db, "users"), {
             name: form.name,

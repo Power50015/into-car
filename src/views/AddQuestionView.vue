@@ -1,11 +1,11 @@
 <template>
   <div class="container my-5">
     <div class="row">
-      <h1 class="text-center">أضف سوال</h1>
+      <h1 class="text-center">أضف سؤال</h1>
       <form @submit.prevent="savePost">
         <!-- Start image-->
         <div class="mb-3">
-          <label for="formFile" class="form-label">صوره السوال</label>
+          <label for="formFile" class="form-label">صوره السؤال</label>
           <template v-if="imgPreview">
             <img :src="imgPreview" class="img-fluid" />
             <p class="mb-0">file name: {{ imgData.value.name }}</p>
@@ -24,7 +24,7 @@
             type="file"
             id="formFile"
             accept="image/jpeg"
-           @change="DetectFiles($event?.target)"
+            @change="DetectFiles($event.target)"
           />
         </div>
         <!-- End image-->
@@ -120,14 +120,14 @@ function savePost() {
   );
 }
 
-function DetectFiles(input:any) {
+function DetectFiles(input: any) {
   imgData.value = input.files[0];
   if (input) {
     var reader = new FileReader();
     reader.onload = (e) => {
       imgPreview.value = e.target!.result;
     };
-    reader.readAsDataURL(input[0]);
+    reader.readAsDataURL(input.files[0]);
   }
 }
 </script>

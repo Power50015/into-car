@@ -22,13 +22,13 @@
           v-if="store.userType == 'maintenance'"
         >
           <h4>عدد الحجوزات</h4>
-          <h4>{{ post }}</h4>
+          <h4>{{ booking }}</h4>
         </div>
       </div>
       <div class="col-12 col-lg-4" v-if="store.userType == 'users'">
         <div class="text-center p-3 bg my-2">
           <h4>عدد الأسئله</h4>
-          <h4>{{ post }}</h4>
+          <h4>{{ question }}</h4>
         </div>
       </div>
       <div class="col-12 my-4" v-if="store.userType == 'maintenance'">

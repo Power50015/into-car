@@ -18,18 +18,18 @@
       </div>
       <!-- Start image-->
       <div class="mb-3">
-        <label for="formFile" class="form-label text-white">صوره المقال</label>
+        <label for="formFile" class="form-label">صوره المستخدم</label>
         <template v-if="imgPreview">
           <img :src="imgPreview" class="img-fluid" />
-          <p class="mb-0 text-white">file name: {{ imgData.value.name }}</p>
-          <p class="mb-0 text-white">
+          <p class="mb-0">file name: {{ imgData.value.name }}</p>
+          <p class="mb-0">
             size: {{ Math.round(imgData.value.size / 1024) }}KB
           </p>
         </template>
         <div class="flex">
-          <h6 class="mb-3 text-white">
+          <h6 class="mb-3">
             حاله الرفع :
-            <span>{{ imgUpload }}</span>
+            <span v-if="imgUpload == 100">100%</span>
           </h6>
         </div>
         <input
@@ -37,7 +37,7 @@
           type="file"
           id="formFile"
           accept="image/jpeg"
-          @change="DetectFiles($event?.target)"
+          @change="DetectFiles($event.target)"
         />
       </div>
       <!-- End image-->
@@ -210,14 +210,14 @@ async function editUser() {
   store.isLoding = true;
 }
 
-function DetectFiles(input: any) {
+function DetectFiles(input:any) {
   imgData.value = input.files[0];
   if (input) {
     var reader = new FileReader();
     reader.onload = (e) => {
       imgPreview.value = e.target!.result;
     };
-    reader.readAsDataURL(input[0]);
+    reader.readAsDataURL(input.files[0]);
   }
 }
 </script>

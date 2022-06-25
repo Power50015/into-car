@@ -170,7 +170,7 @@ async function getPsotCount() {
       where("user", "==", store.userEmail)
     );
     const querySnapshot2 = await getDocs(q2);
-    question.value = querySnapshot.size;
+    question.value = querySnapshot2.size;
     querySnapshot2.forEach((doc) => {
       questions.push(doc.data());
     });
